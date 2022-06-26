@@ -35,7 +35,7 @@
             <Image url="@../assest/orders.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="findIcons" fitHeight="115.0" fitWidth="138.0" layoutX="462.0" layoutY="173.0" pickOnBounds="true" smooth="false">
+      <ImageView fx:id="findIcons" fitHeight="115.0" fitWidth="138.0" layoutX="462.0" layoutY="173.0" onMouseClicked="#roomClickOnAction" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../assest/report.png" />
          </image>

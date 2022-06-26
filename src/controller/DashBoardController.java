@@ -23,4 +23,11 @@ public class DashBoardController {
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(load));
     }
+
+    public void roomClickOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource =getClass().getResource("../view/newRoom.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage window = (Stage) root.getScene().getWindow();
+        window.setScene(new Scene(load));
+    }
 }
