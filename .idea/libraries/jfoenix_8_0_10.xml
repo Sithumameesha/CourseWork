@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="jfoenix-8.0.10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/libs/jfoenix-8.0.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/mysql-connector-java-5.1.49.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/libs" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/classmate-1.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/byte-buddy-1.11.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/FastInfoset-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/hibernate-commons-annotations-5.1.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/hibernate-core-5.6.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/istack-commons-runtime-3.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/jandex-2.2.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/javax.activation-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/javax.persistence-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/jaxb-api-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/jaxb-runtime-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/jboss-logging-3.4.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/jboss-transaction-api_1.2_spec-1.1.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/stax-ex-1.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/required/txw2-2.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="jar://$PROJECT_DIR$/src/libs/lombok.jar!/" />
+    </excluded>
+    <jarDirectory url="file://$PROJECT_DIR$/src/libs" recursive="false" />
+  </library>
+</component>

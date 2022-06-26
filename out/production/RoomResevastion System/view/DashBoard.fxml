@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="449.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
+   <children>
+      <Label layoutX="237.0" layoutY="44.0" text="Soori Accommodation">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="288.0" layoutY="14.0" text="Welcome" textFill="#f80000">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="31.0" layoutY="87.0" prefHeight="4.0" prefWidth="602.0" />
+      <Label layoutY="382.0" prefHeight="45.0" prefWidth="664.0" text="                                                              Welcome To Soori Accommodation">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="regIcon" fitHeight="115.0" fitWidth="138.0" layoutX="60.0" layoutY="173.0" onMouseClicked="#regClickOnAction" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/items.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="roomsIcon" fitHeight="115.0" fitWidth="138.0" layoutX="263.0" layoutY="179.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/orders.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="findIcons" fitHeight="115.0" fitWidth="138.0" layoutX="462.0" layoutY="173.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/report.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
