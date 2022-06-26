@@ -12,17 +12,15 @@ public class RoomDto {
     private String type;
     private String key_money;
     private int qty;
-    private List<Reservation> roomlist = new ArrayList<>();
 
-    public RoomDto(String room_type_id, String type, String key_money, int qty, List<Reservation> roomlist) {
+    public RoomDto() {
+    }
+
+    public RoomDto(String room_type_id, String type, String key_money, int qty) {
         this.room_type_id = room_type_id;
         this.type = type;
         this.key_money = key_money;
         this.qty = qty;
-        this.roomlist = roomlist;
-    }
-
-    public RoomDto() {
     }
 
     public String getRoom_type_id() {
@@ -57,14 +55,6 @@ public class RoomDto {
         this.qty = qty;
     }
 
-    public List<Reservation> getRoomlist() {
-        return roomlist;
-    }
-
-    public void setRoomlist(List<Reservation> roomlist) {
-        this.roomlist = roomlist;
-    }
-
     @Override
     public String toString() {
         return "RoomDto{" +
@@ -72,7 +62,6 @@ public class RoomDto {
                 ", type='" + type + '\'' +
                 ", key_money='" + key_money + '\'' +
                 ", qty=" + qty +
-                ", roomlist=" + roomlist +
                 '}';
     }
 }
