@@ -6,18 +6,24 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="489.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewRoomController">
    <children>
+      <ImageView fitHeight="489.0" fitWidth="600.0" layoutY="-2.0" opacity="0.4" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/901.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="248.0" layoutY="14.0" text="New Room">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Separator layoutX="39.0" layoutY="43.0" prefHeight="3.0" prefWidth="513.0" />
+      <Separator layoutX="90.0" layoutY="53.0" prefHeight="2.0" prefWidth="450.0" />
       <JFXTextField fx:id="txtRoomId" labelFloat="true" layoutX="24.0" layoutY="91.0" prefHeight="25.0" prefWidth="163.0" promptText="Room_Type_Id" />
       <JFXTextField fx:id="txtType" labelFloat="true" layoutX="233.0" layoutY="91.0" prefHeight="25.0" prefWidth="163.0" promptText="Room_Type" />
       <JFXTextField fx:id="txtKeyMoney" labelFloat="true" layoutX="423.0" layoutY="91.0" prefHeight="25.0" prefWidth="163.0" promptText="Key_Money" />
@@ -32,6 +38,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <ImageView fitHeight="56.0" fitWidth="68.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assest/pngwing.com%20(9).png" />
+         </image>
+      </ImageView>
       <TableView fx:id="tblRooms" layoutX="39.0" layoutY="228.0" prefHeight="200.0" prefWidth="530.0">
         <columns>
           <TableColumn prefWidth="132.0" text="Room_Type_Id" />
@@ -40,5 +51,10 @@
             <TableColumn prefWidth="137.0" text="Qty" />
         </columns>
       </TableView>
+      <ImageView fitHeight="200.0" fitWidth="530.0" layoutX="38.0" layoutY="227.0" opacity="0.28" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/2112.w015.n001.628B.p15.628.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
