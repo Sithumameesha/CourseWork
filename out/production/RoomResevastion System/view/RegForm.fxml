@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="539.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegFormController">
    <children>
       <Label layoutX="205.0" layoutY="14.0" text="Room Reservation">
@@ -19,8 +18,8 @@
          </font>
       </Label>
       <Separator layoutX="100.0" layoutY="61.0" prefHeight="8.0" prefWidth="380.0" />
-      <JFXTextField layoutX="25.0" layoutY="137.0" promptText="Res-Id" />
-      <JFXTextField layoutX="204.0" layoutY="197.0" promptText="Student_Id" />
+      <JFXTextField fx:id="txtRes_Id" layoutX="25.0" layoutY="137.0" promptText="Res-Id" />
+      <JFXTextField fx:id="txtStudentId" layoutX="204.0" layoutY="197.0" promptText="Student_Id" />
       <JFXTextField layoutX="376.0" layoutY="137.0" promptText="Status" />
       <Label layoutX="498.0" layoutY="22.0" text="2022/06/22" textFill="#fc0000" />
       <Button fx:id="btnNew" layoutX="485.0" layoutY="85.0" mnemonicParsing="false" onAction="#NewStudentOnAction" style="-fx-background-color: #1973a1;" text="+New Student">
@@ -28,12 +27,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="540.0" layoutY="197.0" mnemonicParsing="false" style="-fx-background-color: #1973a1;" text="Add">
+      <Button fx:id="btnAdd" layoutX="540.0" layoutY="197.0" mnemonicParsing="false" onAction="#btnAddOnAction" style="-fx-background-color: #1973a1;" text="Add">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView layoutX="25.0" layoutY="293.0" prefHeight="200.0" prefWidth="560.0">
+      <TableView fx:id="tblReg" layoutX="25.0" layoutY="293.0" prefHeight="200.0" prefWidth="560.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Res_ID" />
           <TableColumn prefWidth="87.0" text="Key_Money" />
@@ -43,12 +42,12 @@
             <TableColumn prefWidth="88.0" text="Date" />
         </columns>
       </TableView>
-      <Button layoutX="534.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-color: #1973a1;" text="Save">
+      <Button fx:id="btnDelete" layoutX="534.0" layoutY="500.0" mnemonicParsing="false" onAction="#DeletOnAction" style="-fx-background-color: #1973a1;" text="Delete">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <JFXComboBox layoutX="25.0" layoutY="197.0" prefHeight="25.0" prefWidth="135.0" promptText="Room_Type_Id" />
-      <JFXComboBox layoutX="205.0" layoutY="137.0" prefHeight="25.0" prefWidth="135.0" promptText="Key_Money" />
+      <JFXComboBox fx:id="comRoomType" layoutX="25.0" layoutY="197.0" prefHeight="25.0" prefWidth="135.0" promptText="Room_Type_Id" />
+      <JFXComboBox fx:id="comKeyMoney" layoutX="205.0" layoutY="137.0" prefHeight="25.0" prefWidth="135.0" promptText="Key_Money" />
    </children>
 </AnchorPane>
