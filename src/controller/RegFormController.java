@@ -3,17 +3,22 @@ package controller;
 import bo.Custom.Impl.ResrvationBoImpl;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import dto.ReservationDto;
 import dto.RoomDto;
 import dto.StudentDto;
+import entity.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import view.TM.ResevationTm;
+import view.TM.StudentsTm;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +27,9 @@ import java.util.ArrayList;
 
 public class RegFormController {
     public JFXTextField txtQty;
+    public JFXTextField txtKeyMoney;
+    public Label lblDate;
+    public JFXTextField txtStatus;
     ResrvationBoImpl resrvationBo = new ResrvationBoImpl();
 
     public JFXComboBox <String>comStudentId;
@@ -54,8 +62,8 @@ public class RegFormController {
 //                    }
                     RoomDto room = resrvationBo.searchRoom(newRoomId + "");
                     txtRoomType.setText(room.getType());
-                    //txtQty.setText(String.valueOf(room.getQty()));
-                    //txtMonthlyRent.setText(room.getKey_money());
+                    txtQty.setText(String.valueOf(room.getQty()));
+                    txtKeyMoney.setText(room.getKey_money());
 
                 } catch (SQLException | ClassNotFoundException throwables) {
                     throwables.printStackTrace();
@@ -81,9 +89,34 @@ public class RegFormController {
         window.setScene(new Scene(load));
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) {
+    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
+       String type_Id = comRoomType.getId();
+        Object student_Id=comStudentId.getId();
+        String date =lblDate.getText();
+        String key_money = txtKeyMoney.getText();
+        String status = txtStatus.getText();
+        Object resId = txtRes_Id.getText();
 
-    }
+        if (btnAdd.getText().equalsIgnoreCase("save")) {
+            try {
+                resrvationBo.SaveRes(new ReservationDto(type_Id, date, student_Id, resId, key_money, status));
+
+                //  tblReg.getItems().add(new ResevationTm(type_Id,date,student_Id,key_money,status,resId));
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to Save the Student " + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+        }
+
+
+
+
+
 
     public void DeletOnAction(ActionEvent actionEvent) {
 
