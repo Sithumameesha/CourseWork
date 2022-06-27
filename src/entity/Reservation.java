@@ -32,6 +32,8 @@ public class Reservation {
     public Reservation() {
     }
 
+
+
     public String getRes_id() {
         return res_id;
     }

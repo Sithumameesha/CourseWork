@@ -9,15 +9,15 @@ import javax.persistence.ManyToOne;
 public class ReservationDto {
     private String res_id;
     private String date;
-    private Student student_id;
-    private Room room_type_id;
+    private String student_id;
+    private String room_type_id;
     private String status;
     private String key_Money;
 
     public ReservationDto() {
     }
 
-    public ReservationDto(String res_id, String date, Student student_id, Room room_type_id, String status, String key_Money) {
+    public ReservationDto(String res_id, String date, String student_id, String room_type_id, String status, String key_Money) {
         this.res_id = res_id;
         this.date = date;
         this.student_id = student_id;
@@ -42,19 +42,19 @@ public class ReservationDto {
         this.date = date;
     }
 
-    public Student getStudent_id() {
+    public String getStudent_id() {
         return student_id;
     }
 
-    public void setStudent_id(Student student_id) {
+    public void setStudent_id(String student_id) {
         this.student_id = student_id;
     }
 
-    public Room getRoom_type_id() {
+    public String getRoom_type_id() {
         return room_type_id;
     }
 
-    public void setRoom_type_id(Room room_type_id) {
+    public void setRoom_type_id(String room_type_id) {
         this.room_type_id = room_type_id;
     }
 

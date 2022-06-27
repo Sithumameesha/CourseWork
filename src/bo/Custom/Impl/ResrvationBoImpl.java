@@ -10,6 +10,9 @@ import dto.StudentDto;
 import entity.Reservation;
 import entity.Room;
 import entity.Student;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import utill.FactoryConfiguration;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,16 +49,28 @@ public class ResrvationBoImpl implements ResrvationBo {
     }
 
     @Override
-    public boolean SaveRes(ReservationDto reservationDto) throws Exception {
-        return reservationDao.Save(new Reservation(reservationDto.getRes_id(),reservationDto.getDate(),reservationDto.getStudent_id(),reservationDto.getRoom_type_id(),reservationDto.getStatus(),reservationDto.getKey_Money()));
-    }
+    public boolean SaveRes(ReservationDto dto) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Student student = session.get(Student.class, dto.getStudent_id());
+        Room room = session.get(Room.class, dto.getRoom_type_id());
+
+        Reservation reserve = new Reservation(dto.getRes_id(), dto.getDate(), student, room,dto.getKey_Money(), dto.getStatus());
+        session.save(reserve);
+
+        room.setQty(room.getQty() - 1);
+        session.update(room);
+
+        transaction.commit();
+        session.close();
+        return true;    }
 
     @Override
     public ArrayList<ReservationDto> allRes() throws SQLException, ClassNotFoundException {
         ArrayList<Reservation>all = reservationDao.getAll();
         ArrayList<ReservationDto> allRes = new ArrayList<>();
         for (Reservation reservation: all){
-           allRes.add(new ReservationDto(reservation.getRes_id(),reservation.getDate(),reservation.getStudent_id(),reservation.getRoom_type_id(),reservation.getStatus(),reservation.getKey_Money()));
+           allRes.add(new ReservationDto(reservation.getRes_id(),reservation.getDate(),reservation.getStudent_id().getStudent_id(),reservation.getRoom_type_id().getRoom_type_id(),reservation.getStatus(),reservation.getKey_Money()));
         }
         return allRes;
     }
@@ -67,8 +82,9 @@ public class ResrvationBoImpl implements ResrvationBo {
 
     @Override
     public boolean Update(ReservationDto reservationDto) throws Exception {
-        return reservationDao.update(new Reservation(reservationDto.getRes_id(),reservationDto.getDate(),reservationDto.getStudent_id(),reservationDto.getRoom_type_id(),reservationDto.getStatus(),reservationDto.getKey_Money()));
+        return false;
     }
+
 
 
 }
