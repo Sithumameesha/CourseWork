@@ -100,6 +100,18 @@ RoomBoImpl roomBo = new RoomBoImpl();
 
     }
 
-    public void DeleteOnAntion(ActionEvent actionEvent) {
+    public void DeleteOnAntion(ActionEvent actionEvent) throws Exception {
+        String id = tblRooms.getSelectionModel().getSelectedItem().getRoom_type_id();
+        try {
+            roomBo.delete(id);
+
+            tblRooms.getItems().remove(tblRooms.getSelectionModel().getSelectedItem());
+            tblRooms.getSelectionModel().clearSelection();
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to delete the Room " + id).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
