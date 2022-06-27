@@ -11,4 +11,5 @@ public interface RoomBo {
     ArrayList<RoomDto > getAllRooms() throws SQLException, ClassNotFoundException;
     boolean delete(String id) throws Exception;
     boolean Update(RoomDto roomDto) throws Exception;
+    ArrayList<RoomDto> SearchRoom(String id) throws SQLException, ClassNotFoundException;
 }

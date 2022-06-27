@@ -14,4 +14,6 @@ public interface RoomDao {
     boolean delete(String id) throws Exception;
 
     ArrayList<Room> getAll() throws SQLException, ClassNotFoundException;
+
+     Room search (String id ) throws SQLException, ClassNotFoundException;
 }

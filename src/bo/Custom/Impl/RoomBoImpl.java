@@ -36,4 +36,13 @@ public class RoomBoImpl implements RoomBo {
     public boolean Update(RoomDto roomDto) throws Exception {
         return roomDao.update(new Room(roomDto.getRoom_type_id(),roomDto.getType(),roomDto.getKey_money(),roomDto.getQty()));
     }
+
+    @Override
+    public ArrayList<RoomDto> SearchRoom(String id) throws SQLException, ClassNotFoundException {
+        Room all = roomDao.search(id);
+        ArrayList <RoomDto>allRooms = new ArrayList<>();
+        allRooms.add(new RoomDto(all.getRoom_type_id(),all.getType(),all.getKey_money(),all.getQty()));
+        return allRooms;
+    }
+
 }

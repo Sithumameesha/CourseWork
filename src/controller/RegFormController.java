@@ -4,6 +4,7 @@ import bo.Custom.Impl.ResrvationBoImpl;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.RoomDto;
+import dto.StudentDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +21,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RegFormController {
-    public void initialize() {
-        loadAllRoomTypeId();
-
-    }
+    public JFXTextField txtQty;
     ResrvationBoImpl resrvationBo = new ResrvationBoImpl();
+
+    public JFXComboBox <String>comStudentId;
+    public JFXTextField txtRoomType;
     public Button btnNew;
     public AnchorPane root;
     public JFXTextField txtRes_Id;
@@ -33,7 +34,45 @@ public class RegFormController {
     public TableView tblReg;
     public Button btnDelete;
     public JFXComboBox <String>comRoomType;
-    public JFXComboBox comKeyMoney;
+
+
+
+
+    public void initialize() {
+        loadAllRoomTypeId();
+        loadAllStudentId();
+
+
+        comRoomType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newRoomId) -> {
+           // btnReserve.setDisable(newRoomId == null);
+
+
+            if (newRoomId != null) {
+                try {
+//                    if (!exitRooms(newRoomId + "")) {
+//
+//                    }
+                    RoomDto room = resrvationBo.searchRoom(newRoomId + "");
+                    txtRoomType.setText(room.getType());
+                    //txtQty.setText(String.valueOf(room.getQty()));
+                    //txtMonthlyRent.setText(room.getKey_money());
+
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    throwables.printStackTrace();
+                }
+
+            } else {
+//                txtMonthlyRent.clear();
+//                txtQty.clear();
+//                txtStudentName.clear();
+//                txtMonthlyRent.clear();
+            }
+        });
+    }
+
+
+
+
 
     public void NewStudentOnAction(ActionEvent actionEvent) throws IOException {
         URL resource =getClass().getResource("../view/NewStudentForm.fxml");
@@ -51,8 +90,6 @@ public class RegFormController {
     }
     private void loadAllRoomTypeId() {
         try {
-
-
             ArrayList<RoomDto> all = resrvationBo.loadAllRooms();
             for (RoomDto roomDto :all){
                 comRoomType.getItems().add(roomDto.getRoom_type_id());
@@ -63,5 +100,20 @@ public class RegFormController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
     }
+    private void loadAllStudentId() {
+        try {
+            ArrayList<StudentDto> all = resrvationBo.loadAllStudents();
+            for (StudentDto studentDto :all){
+                comStudentId.getItems().add(studentDto.getStudent_id());
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load customer ids").show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
