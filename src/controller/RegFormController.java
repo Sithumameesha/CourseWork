@@ -119,7 +119,7 @@ public class RegFormController {
 
 
         boolean b = saveReserve(resId, date, student_Id, type_Id, key_money, status);
-        //tblReg.getItems().add(new ResevationTm(resId, date, student_Id, type_Id, key_money, status));
+        //
         if (b) {
 
             new Alert(Alert.AlertType.CONFIRMATION, "Save " ).show();
@@ -136,6 +136,7 @@ public class RegFormController {
     public boolean saveReserve(String resId, String date,String student_Id, String type_Id, String key_money,String states) throws Exception {
         try {
             resrvationBo.SaveRes(new ReservationDto(resId, date,student_Id,type_Id,  key_money, states));
+            tblReg.getItems().add(new ResevationTm(resId, date, student_Id, type_Id, key_money, states));
         } catch (SQLException e) {
 
         } catch (ClassNotFoundException e) {
@@ -145,19 +146,20 @@ public class RegFormController {
     }
 
     public void DeletOnAction(ActionEvent actionEvent) throws Exception {
-        String id = tblReg.getSelectionModel().getSelectedItem().getRes_id();
-        try {
-
-            resrvationBo.deleteRes(id);
-
-            tblReg.getItems().remove(tblReg.getSelectionModel().getSelectedItem());
-            tblReg.getSelectionModel().clearSelection();
-
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        String id = tblReg.getSelectionModel().getSelectedItem().getRes_id();
+//        try {
+//
+//            resrvationBo.deleteRes(id);
+//
+//            tblReg.getItems().remove(tblReg.getSelectionModel().getSelectedItem());
+//            tblReg.getSelectionModel().clearSelection();
+//
+//        } catch (SQLException e) {
+//            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        loadAllRes();
 
     }
 

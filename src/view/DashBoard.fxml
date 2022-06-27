@@ -20,25 +20,30 @@
          </font>
       </Label>
       <Separator layoutX="31.0" layoutY="87.0" prefHeight="4.0" prefWidth="602.0" />
-      <Label layoutY="382.0" prefHeight="45.0" prefWidth="664.0" text="                                                              Welcome To Soori Accommodation">
+      <Label fx:id="lblMenu" alignment="CENTER" layoutY="344.0" prefHeight="45.0" prefWidth="664.0" text="  Welocome" textFill="RED">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="regIcon" fitHeight="115.0" fitWidth="138.0" layoutX="60.0" layoutY="173.0" onMouseClicked="#regClickOnAction" onMouseEntered="#EnterOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/pngwing.com%20(54).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="roomsIcon" fitHeight="115.0" fitWidth="138.0" layoutX="263.0" layoutY="179.0" onMouseEntered="#EnterOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/pngwing.com%20(8).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="findIcons" fitHeight="115.0" fitWidth="138.0" layoutX="462.0" layoutY="173.0" onMouseClicked="#roomClickOnAction" onMouseEntered="#EnterOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/pngwing.com%20(7).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblDescription" alignment="CENTER" layoutY="396.0" prefHeight="45.0" prefWidth="664.0" text=" Welcome To Soori Accommodation">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="regIcon" fitHeight="115.0" fitWidth="138.0" layoutX="60.0" layoutY="173.0" onMouseClicked="#regClickOnAction" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@../assest/items.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="roomsIcon" fitHeight="115.0" fitWidth="138.0" layoutX="263.0" layoutY="179.0" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@../assest/orders.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="findIcons" fitHeight="115.0" fitWidth="138.0" layoutX="462.0" layoutY="173.0" onMouseClicked="#roomClickOnAction" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@../assest/report.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
