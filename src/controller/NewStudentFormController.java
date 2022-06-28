@@ -1,5 +1,6 @@
 package controller;
 
+import bo.BoFactory;
 import bo.Custom.Impl.StudentsBoImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.StudentDto;
@@ -33,7 +34,7 @@ public class NewStudentFormController {
     public ImageView HomePng;
     public AnchorPane root;
 
-    StudentsBoImpl studentsBo= new StudentsBoImpl();
+    StudentsBoImpl studentsBo= (StudentsBoImpl) BoFactory.boFactory().getBO(BoFactory.BOTypes.STUDENT);
     public JFXTextField txtId;
     public JFXTextField txtName;
     public JFXTextField txtDob;

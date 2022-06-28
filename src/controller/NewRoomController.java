@@ -1,5 +1,6 @@
 package controller;
 
+import bo.BoFactory;
 import bo.Custom.Impl.RoomBoImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.RoomDto;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 
 public class NewRoomController {
     public ImageView homePng;
-    RoomBoImpl roomBo = new RoomBoImpl();
+    RoomBoImpl roomBo = (RoomBoImpl) BoFactory.boFactory().getBO(BoFactory.BOTypes.ROOM);
     public AnchorPane root;
     public JFXTextField txtRoomId;
     public JFXTextField txtType;

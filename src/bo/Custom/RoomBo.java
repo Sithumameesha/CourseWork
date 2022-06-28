@@ -1,12 +1,13 @@
 package bo.Custom;
 
+import bo.SuperBo;
 import dto.RoomDto;
 import dto.StudentDto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface RoomBo {
+public interface RoomBo extends SuperBo {
     boolean Save(RoomDto roomDto) throws Exception;
     ArrayList<RoomDto > getAllRooms() throws SQLException, ClassNotFoundException;
     boolean delete(String id) throws Exception;

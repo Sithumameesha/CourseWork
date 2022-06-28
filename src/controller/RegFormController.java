@@ -1,5 +1,6 @@
 package controller;
 
+import bo.BoFactory;
 import bo.Custom.Impl.ResrvationBoImpl;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -39,7 +40,7 @@ public class RegFormController {
     public Label lblDate;
     public JFXTextField txtStatus;
     public ImageView homepng;
-    ResrvationBoImpl resrvationBo = new ResrvationBoImpl();
+    ResrvationBoImpl resrvationBo = (ResrvationBoImpl) BoFactory.boFactory().getBO(BoFactory.BOTypes.RESERVATION);
 
     public JFXComboBox<String> comStudentId;
     public JFXTextField txtRoomType;
