@@ -1,3 +1,4 @@
+import entity.Login;
 import entity.Student;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,18 @@ import java.util.List;
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {launch(args);
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+
+        Query query = session.createQuery("select e from Login e where e.password = '4321' and e.name= 'Ameesha'");
+       Login logins = (Login) query.uniqueResult();
+        System.out.println(logins);
+            transaction.commit();
+            session.close();
+
+
+
     }
 
     @Override
