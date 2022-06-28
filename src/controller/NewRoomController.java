@@ -88,10 +88,10 @@ public class NewRoomController {
         if (btnSave.getText().equalsIgnoreCase("save")) {
             try {
                 roomBo.Save(new RoomDto(roomId, type, keyMoney, qty));
-
                 tblRooms.getItems().add(new RoomTm(roomId, type, keyMoney, qty));
+                new Alert(Alert.AlertType.CONFIRMATION,"Succesfully add New Room").show();
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, "Failed to Save the Room " + e.getMessage()).show();
+                new Alert(Alert.AlertType.ERROR,"Falied add New Room");
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -99,9 +99,9 @@ public class NewRoomController {
         } else {
             try {
                 roomBo.Update(new RoomDto(roomId, type, keyMoney, qty));
-
+                new Alert(Alert.AlertType.CONFIRMATION, " updated  " ).show();
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, "Failed to update the Room " + roomId + e.getMessage()).show();
+                new Alert(Alert.AlertType.ERROR, " Falied update  " ).show();
             } catch (ClassNotFoundException e) {
 
                 e.printStackTrace();
@@ -122,12 +122,13 @@ public class NewRoomController {
         String id = tblRooms.getSelectionModel().getSelectedItem().getRoom_type_id();
         try {
             roomBo.delete(id);
+            new Alert(Alert.AlertType.ERROR, " Deleted  " ).show();
 
             tblRooms.getItems().remove(tblRooms.getSelectionModel().getSelectedItem());
             tblRooms.getSelectionModel().clearSelection();
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to delete the Room " + id).show();
+            new Alert(Alert.AlertType.ERROR, "Failed to delete the Room").show();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

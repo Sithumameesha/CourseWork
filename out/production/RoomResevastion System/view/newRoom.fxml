@@ -51,10 +51,5 @@
             <TableColumn prefWidth="137.0" text="Qty" />
         </columns>
       </TableView>
-      <ImageView fitHeight="200.0" fitWidth="530.0" layoutX="38.0" layoutY="227.0" opacity="0.28" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@../assest/2112.w015.n001.628B.p15.628.jpg" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

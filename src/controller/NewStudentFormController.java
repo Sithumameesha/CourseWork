@@ -83,6 +83,7 @@ public class NewStudentFormController {
         if (btnAdd.getText().equalsIgnoreCase("save")) {
             try {
                 studentsBo.Save(new StudentDto(id, name, address,con,dob,gender));
+                new Alert(Alert.AlertType.CONFIRMATION, " Save the Student " ).show();
 
                 tblStudents.getItems().add(new StudentsTm(id, name, address,con,dob,gender));
             } catch (SQLException e) {
@@ -96,7 +97,7 @@ public class NewStudentFormController {
 
             try {
                 studentsBo.Update(new StudentDto(id, name, address,con,dob,gender));
-
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated " ).show();
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Failed to update the Student " + id + e.getMessage()).show();
@@ -139,11 +140,12 @@ public class NewStudentFormController {
         try {
             studentsBo.delete(id);
 
+            new Alert(Alert.AlertType.CONFIRMATION, " Deleted t " ).show();
             tblStudents.getItems().remove(tblStudents.getSelectionModel().getSelectedItem());
             tblStudents.getSelectionModel().clearSelection();
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
+            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " ).show();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

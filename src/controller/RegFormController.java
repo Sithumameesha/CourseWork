@@ -70,9 +70,6 @@ public class RegFormController {
 
             if (newRoomId != null) {
                 try {
-//                    if (!exitRooms(newRoomId + "")) {
-//
-//                    }
                     RoomDto room = resrvationBo.searchRoom(newRoomId + "");
                     txtRoomType.setText(room.getType());
                     txtQty.setText(String.valueOf(room.getQty()));
@@ -125,7 +122,7 @@ public class RegFormController {
 
 
         boolean b = saveReserve(resId, date, student_Id, type_Id, key_money, status);
-        //
+
         if (b) {
 
             new Alert(Alert.AlertType.CONFIRMATION, "Save " ).show();
@@ -152,19 +149,20 @@ public class RegFormController {
     }
 
     public void DeletOnAction(ActionEvent actionEvent) throws Exception {
-//        String id = tblReg.getSelectionModel().getSelectedItem().getRes_id();
-//        try {
-//
-//            resrvationBo.deleteRes(id);
-//
-//            tblReg.getItems().remove(tblReg.getSelectionModel().getSelectedItem());
-//            tblReg.getSelectionModel().clearSelection();
-//
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        String id = tblReg.getSelectionModel().getSelectedItem().getRes_id();
+        try {
+
+            resrvationBo.deleteRes(id);
+            new Alert(Alert.AlertType.ERROR, "Deleted").show();
+
+            tblReg.getItems().remove(tblReg.getSelectionModel().getSelectedItem());
+            tblReg.getSelectionModel().clearSelection();
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to delete  " + id).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         loadAllRes();
 
     }
