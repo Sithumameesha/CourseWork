@@ -17,7 +17,7 @@
             <Image url="@../assest/901.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="265.0" layoutY="14.0" text="Check Room">
+      <Label layoutX="265.0" layoutY="14.0" text="Avaliable Room">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
