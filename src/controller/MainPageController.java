@@ -30,7 +30,6 @@ public class MainPageController {
         Login exist = loginBo.exist( password);
         if (exist == null){
 
-           // new Alert(Alert.AlertType.CONFIRMATION, "Please").show();
         URL resource =getClass().getResource("../view/DashBoard.fxml");
             Parent load = FXMLLoader.load(resource);
             Stage window = (Stage) root.getScene().getWindow();
