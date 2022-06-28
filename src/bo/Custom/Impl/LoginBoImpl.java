@@ -12,7 +12,7 @@ LoginDao loginDao= new LoginDaoImpl();
 
 
     @Override
-    public Login exist( String password) throws SQLException, ClassNotFoundException {
+    public Boolean exist( String password) throws SQLException, ClassNotFoundException {
        return loginDao.exist( password);
     }
 }

@@ -1,4 +1,5 @@
 import entity.Login;
+import entity.Room;
 import entity.Student;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

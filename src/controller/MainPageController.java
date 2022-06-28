@@ -27,16 +27,25 @@ public class MainPageController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         String password= txtPassword.getText();
-        Login exist = loginBo.exist( password);
-        if (exist == null){
 
-        URL resource =getClass().getResource("../view/DashBoard.fxml");
-            Parent load = FXMLLoader.load(resource);
-            Stage window = (Stage) root.getScene().getWindow();
-            window.setScene(new Scene(load));
-
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Fuck This").show();
+        try {
+            boolean d = loginBo.exist(password);
+            if (!d){
+                new Alert(Alert.AlertType.ERROR, " Password Wrong ").show();
+                txtPassword.clear();
+                txtUserName.clear();
+            }else {
+                URL resource =getClass().getResource("../view/DashBoard.fxml");
+                Parent load = FXMLLoader.load(resource);
+                Stage window = (Stage) root.getScene().getWindow();
+                window.setScene(new Scene(load));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
+}
 }
