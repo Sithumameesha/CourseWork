@@ -1,9 +1,9 @@
-package dao.Custom;
+package bo.Custom;
 
 import entity.Login;
 
 import java.sql.SQLException;
 
-public interface LoginDao {
+public interface LoginBo {
     Login exist( String password) throws SQLException, ClassNotFoundException ;
 }
