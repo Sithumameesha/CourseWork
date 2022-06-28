@@ -17,8 +17,8 @@ public class LoginDaoImpl implements LoginDao {
        try {
            Session session = FactoryConfiguration.getInstance().getSession();
            Transaction transaction = session.beginTransaction();
-               login = (Login) session.createQuery("select e from Login e where e.password = :password and e.name = :name").setParameter("password", password).setParameter("").uniqueResult();
-               if (login != null && login.getPassword().equals(password)) {
+               login = (Login) session.createQuery("select e from Login e where e.password = :password and e.name = :name").setParameter("password", password).setParameter("name",name).uniqueResult();
+               if (login != null && login.getPassword().equals(password)&&login.getName().equals(name)) {
                    return true;
        }
 

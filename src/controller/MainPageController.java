@@ -27,9 +27,9 @@ public class MainPageController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         String password= txtPassword.getText();
-
+        String name =txtUserName.getText();
         try {
-            boolean d = loginBo.exist(password);
+            boolean d = loginBo.exist(password,name);
             if (!d){
                 new Alert(Alert.AlertType.ERROR, " Password Wrong ").show();
                 txtPassword.clear();

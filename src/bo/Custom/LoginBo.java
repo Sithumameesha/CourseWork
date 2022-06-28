@@ -5,5 +5,5 @@ import entity.Login;
 import java.sql.SQLException;
 
 public interface LoginBo {
-    Boolean exist( String password) throws SQLException, ClassNotFoundException ;
+    Boolean exist( String password,String name) throws SQLException, ClassNotFoundException ;
 }
