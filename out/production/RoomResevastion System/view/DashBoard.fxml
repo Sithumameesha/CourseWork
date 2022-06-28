@@ -30,7 +30,7 @@
             <Image url="@../assest/pngwing.com%20(54).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="roomsIcon" fitHeight="115.0" fitWidth="138.0" layoutX="263.0" layoutY="179.0" onMouseEntered="#EnterOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
+      <ImageView fx:id="roomsIcon" fitHeight="115.0" fitWidth="138.0" layoutX="263.0" layoutY="179.0" onMouseClicked="#Check" onMouseEntered="#EnterOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../assest/pngwing.com%20(8).png" />
          </image>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="353.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckRoomController">
+   <children>
+      <ImageView fitHeight="353.0" fitWidth="600.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assest/901.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="265.0" layoutY="14.0" text="Check Room">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="157.0" layoutY="57.0" prefHeight="5.0" prefWidth="309.0" />
+      <TableView fx:id="tblRoomAvailable" layoutX="42.0" layoutY="100.0" prefHeight="200.0" prefWidth="528.0">
+        <columns>
+          <TableColumn prefWidth="109.0" text="Room_Id" />
+          <TableColumn prefWidth="171.0" text="Key_Money" />
+            <TableColumn prefWidth="134.0" text="Qty" />
+            <TableColumn prefWidth="113.0" text="Type" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="homePng" fitHeight="55.0" fitWidth="69.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#Click" onMouseEntered="#Enter" onMouseExited="#Exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assest/home-icon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

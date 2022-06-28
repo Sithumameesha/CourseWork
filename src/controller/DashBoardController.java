@@ -86,4 +86,12 @@ public class DashBoardController {
             lblDescription.setText("Please select one of above main operations to proceed");
         }
     }
+
+    public void Check(MouseEvent mouseEvent) throws IOException {
+        URL resource =getClass().getResource("../view/CheckRoom.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage window = (Stage) root.getScene().getWindow();
+        window.setScene(new Scene(load));
+
+    }
 }
