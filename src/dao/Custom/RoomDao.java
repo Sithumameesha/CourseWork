@@ -1,12 +1,13 @@
 package dao.Custom;
 
+import dao.SuperDao;
 import entity.Room;
 import entity.Student;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface RoomDao {
+public interface RoomDao extends SuperDao {
     boolean Save(Room room) throws Exception;
 
     boolean update(Room room) throws Exception;

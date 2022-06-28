@@ -4,6 +4,7 @@ import bo.Custom.ResrvationBo;
 import dao.Custom.Impl.ReservationDaoImpl;
 import dao.Custom.Impl.RoomDaoImpl;
 import dao.Custom.Impl.StudentDaoImpl;
+import dao.DaoFactory;
 import dto.ReservationDto;
 import dto.RoomDto;
 import dto.StudentDto;
@@ -18,9 +19,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ResrvationBoImpl implements ResrvationBo {
-    RoomDaoImpl roomDao = new RoomDaoImpl();
-    StudentDaoImpl studentDao= new StudentDaoImpl();
-    ReservationDaoImpl reservationDao = new ReservationDaoImpl();
+    RoomDaoImpl roomDao= (RoomDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.ROOM);
+    StudentDaoImpl studentDao= (StudentDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.STUDENT);
+    ReservationDaoImpl reservationDao = (ReservationDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.RESERVATION);
     @Override
     public ArrayList<RoomDto> loadAllRooms() throws SQLException, ClassNotFoundException {
         ArrayList<Room>all = roomDao.getAll();
