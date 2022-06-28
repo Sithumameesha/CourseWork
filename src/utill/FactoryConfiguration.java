@@ -1,5 +1,6 @@
 package utill;
 
+import entity.Login;
 import entity.Reservation;
 import entity.Room;
 import entity.Student;
@@ -13,7 +14,7 @@ public class FactoryConfiguration {
 
     private FactoryConfiguration(){
         Configuration configuration = new Configuration().configure().addAnnotatedClass(Student.class).addAnnotatedClass(Reservation.class)
-                .addAnnotatedClass(Room.class);
+                .addAnnotatedClass(Room.class).addAnnotatedClass(Login.class);
 
 
         sessionFactory = configuration.buildSessionFactory();
