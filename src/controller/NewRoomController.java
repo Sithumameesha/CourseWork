@@ -4,20 +4,33 @@ import bo.Custom.Impl.RoomBoImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.RoomDto;
 import dto.StudentDto;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import view.TM.RoomTm;
 import view.TM.StudentsTm;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NewRoomController {
-RoomBoImpl roomBo = new RoomBoImpl();
+    public ImageView homePng;
+    RoomBoImpl roomBo = new RoomBoImpl();
     public AnchorPane root;
     public JFXTextField txtRoomId;
     public JFXTextField txtType;
@@ -117,6 +130,49 @@ RoomBoImpl roomBo = new RoomBoImpl();
             new Alert(Alert.AlertType.ERROR, "Failed to delete the Room " + id).show();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void Click(MouseEvent mouseEvent) throws IOException {
+        URL resource =getClass().getResource("../view/DashBoard.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage window = (Stage) root.getScene().getWindow();
+        window.setScene(new Scene(load));
+    }
+
+    public void Enter(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() instanceof ImageView) {
+            ImageView icon = (ImageView) mouseEvent.getSource();
+
+            switch (icon.getId()) {
+                case "homePng":
+                    break;
+            }
+
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1.2);
+            scaleT.setToY(1.2);
+            scaleT.play();
+
+            DropShadow glow = new DropShadow();
+            glow.setColor(Color.CORNFLOWERBLUE);
+            glow.setWidth(20);
+            glow.setHeight(20);
+            glow.setRadius(20);
+            icon.setEffect(glow);
+
+        }
+    }
+
+    public void Exited(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() instanceof ImageView) {
+            ImageView icon = (ImageView) mouseEvent.getSource();
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1);
+            scaleT.setToY(1);
+            scaleT.play();
+
+            icon.setEffect(null);
         }
     }
 }

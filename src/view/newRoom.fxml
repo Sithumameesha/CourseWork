@@ -38,9 +38,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="56.0" fitWidth="68.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="homePng" fitHeight="65.0" fitWidth="68.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#Click" onMouseEntered="#Enter" onMouseExited="#Exited" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@../assest/pngwing.com%20(9).png" />
+            <Image url="@../assest/home-icon.png" />
          </image>
       </ImageView>
       <TableView fx:id="tblRooms" layoutX="39.0" layoutY="228.0" prefHeight="200.0" prefWidth="530.0">
