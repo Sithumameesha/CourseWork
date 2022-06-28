@@ -6,17 +6,24 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="477.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewStudentFormController">
+<AnchorPane fx:id="root" prefHeight="477.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewStudentFormController">
    <children>
+      <ImageView fitHeight="477.0" fitWidth="576.0" opacity="0.55" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/901.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="229.0" layoutY="14.0" text="New Students">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Separator layoutX="28.0" layoutY="39.0" prefHeight="12.0" prefWidth="531.0" />
+      <Separator layoutX="111.0" layoutY="41.0" prefHeight="12.0" prefWidth="374.0" />
       <JFXTextField fx:id="txtId" labelFloat="true" layoutX="28.0" layoutY="92.0" promptText="Student_Id" />
       <JFXTextField fx:id="txtName" labelFloat="true" layoutX="220.0" layoutY="92.0" promptText="Name" />
       <JFXTextField fx:id="txtDob" labelFloat="true" layoutX="28.0" layoutY="150.0" promptText="Dob" />
@@ -43,5 +50,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <ImageView fx:id="HomePng" fitHeight="59.0" fitWidth="65.0" layoutX="9.0" layoutY="12.0" onMouseClicked="#ClickOnAction" onMouseEntered="#PlayOnAction" onMouseExited="#ExitedOnAction" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/home-icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

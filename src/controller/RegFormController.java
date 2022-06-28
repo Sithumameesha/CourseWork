@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.TM.ResevationTm;
@@ -32,6 +34,7 @@ public class RegFormController {
     public JFXTextField txtKeyMoney;
     public Label lblDate;
     public JFXTextField txtStatus;
+    public ImageView homepng;
     ResrvationBoImpl resrvationBo = new ResrvationBoImpl();
 
     public JFXComboBox<String> comStudentId;
@@ -192,4 +195,9 @@ public class RegFormController {
         }
     }
 
+    public void clickOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void Exiet(MouseEvent mouseEvent) {
+    }
 }
