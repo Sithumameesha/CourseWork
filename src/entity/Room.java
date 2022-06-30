@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +12,7 @@ public class Room {
     private String type;
     private String key_money;
     private int qty;
-@OneToMany(mappedBy = "room_type_id")
+@OneToMany(mappedBy = "room_type_id",fetch = FetchType.EAGER)
     private List<Reservation> roomlist = new ArrayList<>();
 
     public Room() {

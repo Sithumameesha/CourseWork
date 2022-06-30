@@ -1,6 +1,6 @@
 package view.TM;
 
-public class RoomTm {
+public class RoomTm implements Comparable<RoomTm>{
     private String room_type_id;
     private String type;
     private String key_money;
@@ -56,5 +56,11 @@ public class RoomTm {
                 ", key_money='" + key_money + '\'' +
                 ", qty=" + qty +
                 '}';
+    }
+
+    @Override
+    public int compareTo(RoomTm o) {
+
+        return  room_type_id.compareTo(o.room_type_id);
     }
 }

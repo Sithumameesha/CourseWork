@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class NewRoomController {
     public ImageView homePng;
@@ -91,6 +93,7 @@ public class NewRoomController {
                 roomBo.Save(new RoomDto(roomId, type, keyMoney, qty));
                 tblRooms.getItems().add(new RoomTm(roomId, type, keyMoney, qty));
                 new Alert(Alert.AlertType.CONFIRMATION,"Succesfully add New Room").show();
+                ClearText();
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,"Falied add New Room");
             } catch (ClassNotFoundException e) {
@@ -100,6 +103,7 @@ public class NewRoomController {
         } else {
             try {
                 roomBo.Update(new RoomDto(roomId, type, keyMoney, qty));
+                ClearText();
                 new Alert(Alert.AlertType.CONFIRMATION, " updated  " ).show();
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, " Falied update  " ).show();
@@ -124,12 +128,14 @@ public class NewRoomController {
         try {
             roomBo.delete(id);
             new Alert(Alert.AlertType.ERROR, " Deleted  " ).show();
+            ClearText();
 
             tblRooms.getItems().remove(tblRooms.getSelectionModel().getSelectedItem());
             tblRooms.getSelectionModel().clearSelection();
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the Room").show();
+            ClearText();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -176,5 +182,42 @@ public class NewRoomController {
 
             icon.setEffect(null);
         }
+    }
+
+    public void newOnaction(ActionEvent actionEvent) {
+        ClearText();
+    }
+
+    private void ClearText() {
+        txtType.clear();
+        txtKeyMoney.clear();
+        txtQty.clear();
+        txtRoomId.clear();
+        txtRoomId.setText(generateNewId());
+    }
+    private String generateNewId() {
+        try {
+            return roomBo.generateNewRoomId();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate a new id " + e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        if (tblRooms.getItems().isEmpty()) {
+            return "R-001";
+        } else {
+            String id = getLastCustomerId();
+            int newCustomerId = Integer.parseInt(id.replace("C", "")) + 1;
+            return String.format("C00-%03d", newCustomerId);
+        }
+
+    }
+    private String getLastCustomerId() {
+        List<RoomTm> tmList = new ArrayList<>(tblRooms.getItems());
+
+        Collections.sort(tmList);
+        return tmList.get(tmList.size() - 1).getRoom_type_id();
     }
 }

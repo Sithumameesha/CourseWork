@@ -17,4 +17,6 @@ public interface RoomDao extends SuperDao {
     ArrayList<Room> getAll() throws SQLException, ClassNotFoundException;
 
      Room search (String id ) throws SQLException, ClassNotFoundException;
+
+    String generateNewID() throws SQLException, ClassNotFoundException;
 }

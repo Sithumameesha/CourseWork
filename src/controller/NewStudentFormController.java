@@ -12,14 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import utill.ValidationUtil;
 import view.TM.StudentsTm;
 
 import java.io.IOException;
@@ -27,12 +31,15 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class NewStudentFormController {
     public TableView <StudentsTm>tblStudents;
     public Button btnDelete;
     public ImageView HomePng;
     public AnchorPane root;
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap<>();
 
     StudentsBoImpl studentsBo= (StudentsBoImpl) BoFactory.boFactory().getBO(BoFactory.BOTypes.STUDENT);
     public JFXTextField txtId;
@@ -69,6 +76,19 @@ public class NewStudentFormController {
         });
         LoadAllStudents();
         tblStudents.refresh();
+        btnAdd.setDisable(true);
+        Pattern idPattern = Pattern.compile("^(S)[0-9]{3,5}$");
+        Pattern namePattern = Pattern.compile("^[A-z ]{3,15}$");
+        Pattern addressPattern = Pattern.compile("^[A-z0-9 ,/]{4,20}$");
+        map.put(txtId,idPattern);
+        map.put(txtName,namePattern);
+
+
+
+
+
+
+
         }
 
 
@@ -208,5 +228,25 @@ public class NewStudentFormController {
 
     public void newOnAction(ActionEvent actionEvent) {
         ClearText();
+    }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        ValidationUtil.validate(map,btnAdd);
+//        TextField = error
+//        boolean // validation ok
+
+        //if the enter key pressed
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            Object response =  ValidationUtil.validate(map,btnAdd);;
+            //if the response is a text field
+            //that means there is a error
+            if (response instanceof TextField) {
+                TextField textField = (TextField) response;
+                textField.requestFocus();// if there is a error just focus it
+            } else if (response instanceof Boolean) {
+                System.out.println("Work");
+
+            }
+        }
     }
 }

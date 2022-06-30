@@ -51,5 +51,6 @@
             <TableColumn prefWidth="137.0" text="Qty" />
         </columns>
       </TableView>
+      <Button layoutX="557.0" layoutY="17.0" mnemonicParsing="false" onAction="#newOnaction" style="-fx-background-color: #1277c9;" text="+" />
    </children>
 </AnchorPane>
