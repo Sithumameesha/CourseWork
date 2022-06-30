@@ -85,8 +85,8 @@ public class NewStudentFormController {
             try {
                 studentsBo.Save(new StudentDto(id, name, address,con,dob,gender));
                 new Alert(Alert.AlertType.CONFIRMATION, " Save the Student " ).show();
-
                 tblStudents.getItems().add(new StudentsTm(id, name, address,con,dob,gender));
+                ClearText();
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Failed to Save the Student " + e.getMessage()).show();
             } catch (ClassNotFoundException e) {
@@ -99,6 +99,7 @@ public class NewStudentFormController {
             try {
                 studentsBo.Update(new StudentDto(id, name, address,con,dob,gender));
                 new Alert(Alert.AlertType.CONFIRMATION, "Updated " ).show();
+                ClearText();
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Failed to update the Student " + id + e.getMessage()).show();
@@ -147,9 +148,19 @@ public class NewStudentFormController {
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " ).show();
+            ClearText();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void ClearText() {
+        txtGender.clear();
+        txtCon.clear();
+        txtDob.clear();
+        txtAddress.clear();
+        txtName.clear();
+        txtId.clear();
     }
 
     public void ClickOnAction(MouseEvent mouseEvent) throws IOException {
@@ -194,4 +205,8 @@ public class NewStudentFormController {
 
     }
 }
+
+    public void newOnAction(ActionEvent actionEvent) {
+        ClearText();
+    }
 }

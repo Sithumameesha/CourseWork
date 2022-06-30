@@ -40,6 +40,7 @@ public class RegFormController {
     public Label lblDate;
     public JFXTextField txtStatus;
     public ImageView homepng;
+    public Button btnClear;
     ResrvationBoImpl resrvationBo = (ResrvationBoImpl) BoFactory.boFactory().getBO(BoFactory.BOTypes.RESERVATION);
 
     public JFXComboBox<String> comStudentId;
@@ -58,8 +59,8 @@ public class RegFormController {
         loadAllStudentId();
         loadAllRes();
         tblReg.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("res_id"));
-        tblReg.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("key_Money"));
-        tblReg.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblReg.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblReg.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("key_Money"));
         tblReg.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("room_type_id"));
         tblReg.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("student_id"));
         tblReg.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -85,15 +86,14 @@ public class RegFormController {
             }
         });
         tblReg.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            btnAdd.setText(newValue != null ? "Update" : "Save");
             btnAdd.setDisable(newValue == null);
             btnNew.setDisable(newValue== null);
 
             if (newValue != null) {
                 txtRes_Id.setText(newValue.getRes_id());
-                txtKeyMoney.setText(newValue.getKey_Money());
+                txtStatus .setText(newValue.getKey_Money());
                txtRoomType.setText(newValue.getRoom_type_id());
-               txtStatus.setText(newValue.getStatus());
+                txtKeyMoney .setText(newValue.getStatus());
                txtQty.setDisable(true);
                btnNew.setDisable(true);
 
@@ -141,11 +141,10 @@ public class RegFormController {
 
         if (!b) {
 
-            new Alert(Alert.AlertType.ERROR, "Not Save " ).show();
-
+            new Alert(Alert.AlertType.CONFIRMATION, " Save " ).show();
             clearText();
         } else {
-            new Alert(Alert.AlertType.CONFIRMATION, "Save " ).show();
+            new Alert(Alert.AlertType.ERROR, "Save " ).show();
         }
 
 
@@ -189,7 +188,6 @@ public class RegFormController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        loadAllRes();
 
     }
 
@@ -263,5 +261,9 @@ public class RegFormController {
             icon.setEffect(glow);
 
         }
+    }
+
+    public void ClearOnAction(ActionEvent actionEvent) {
+        clearText();
     }
 }

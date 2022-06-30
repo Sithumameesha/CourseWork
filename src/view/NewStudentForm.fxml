@@ -55,5 +55,6 @@
             <Image url="@../assest/home-icon.png" />
          </image>
       </ImageView>
+      <Button layoutX="538.0" layoutY="15.0" mnemonicParsing="false" onAction="#newOnAction" style="-fx-background-color: #1fa0d3;" text="+" />
    </children>
 </AnchorPane>

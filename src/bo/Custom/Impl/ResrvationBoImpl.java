@@ -83,7 +83,14 @@ public class ResrvationBoImpl implements ResrvationBo {
 
     @Override
     public boolean Update(ReservationDto reservationDto) throws Exception {
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Student student = session.get(Student.class, reservationDto.getStudent_id());
+        Room room = session.get(Room.class, reservationDto.getRoom_type_id());
+        transaction.commit();
+        session.close();
+        return reservationDao.update(new Reservation(reservationDto.getRes_id(),reservationDto.getDate(),student,room,reservationDto.getKey_Money(),reservationDto.getKey_Money()));
+
     }
 
 

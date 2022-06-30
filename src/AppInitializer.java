@@ -16,7 +16,6 @@ import java.util.List;
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {launch(args);
-
     }
 
     @Override
