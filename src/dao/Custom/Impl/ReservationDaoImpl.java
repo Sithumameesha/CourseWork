@@ -66,4 +66,19 @@ public class ReservationDaoImpl implements ReservationDao {
         session.close();
         return allRes;
     }
+
+    @Override
+    public String generateNewID() throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createSQLQuery("SELECT res_id FROM Reservation ORDER  BY res_id DESC LIMIT 1");
+        String s = (String) query.uniqueResult();
+        transaction.commit();
+        session.close();
+        if (s != null) {
+            int newStudentId = Integer.parseInt(s.replace("R-", "")) + 1;
+            return String.format("R-%03d", newStudentId);
+        }
+        return "R-001";
+    }
 }

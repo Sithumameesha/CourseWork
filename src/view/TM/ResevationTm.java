@@ -3,7 +3,7 @@ package view.TM;
 import entity.Room;
 import entity.Student;
 
-public class ResevationTm {
+public class ResevationTm implements Comparable<ResevationTm>{
     private String res_id;
     private String date;
     private String student_id;
@@ -81,5 +81,10 @@ public class ResevationTm {
                 ", status='" + status + '\'' +
                 ", key_Money='" + key_Money + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(ResevationTm o) {
+        return res_id.compareTo(o.res_id);
     }
 }

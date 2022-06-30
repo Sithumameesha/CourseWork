@@ -1,6 +1,6 @@
 package view.TM;
 
-public class StudentsTm {
+public class StudentsTm implements Comparable<StudentsTm> {
     private String student_id;
     private String name;
     private String address;
@@ -78,5 +78,10 @@ public class StudentsTm {
                 ", gender='" + gender + '\'' +
                 ", contact_no='" + contact_no + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(StudentsTm o) {
+        return student_id.compareTo(o.student_id);
     }
 }

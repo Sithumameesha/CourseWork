@@ -49,4 +49,9 @@ StudentDaoImpl studentDao = new StudentDaoImpl();
 
         ));
     }
+
+    @Override
+    public String generateNewStudentId() throws SQLException, ClassNotFoundException {
+        return studentDao.generateNewID();
+    }
 }

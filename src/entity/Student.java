@@ -15,7 +15,7 @@ public class Student {
     private String dob;
     private String gender;
     private String contact_no;
-@OneToMany(mappedBy = "student_id",fetch = FetchType.EAGER)
+@OneToMany(mappedBy = "student_id")
   private List<Reservation> studentList= new ArrayList();
 
     public Student(String student_id, String name, String address, String dob, String gender, String contact_no, List<Reservation> studentList) {

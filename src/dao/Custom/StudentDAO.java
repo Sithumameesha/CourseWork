@@ -15,4 +15,6 @@ public interface StudentDAO extends SuperDao {
     boolean delete(String id) throws Exception;
 
     ArrayList<Student> getAll() throws SQLException, ClassNotFoundException;
+
+    String generateNewID() throws SQLException, ClassNotFoundException;
 }

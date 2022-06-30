@@ -15,4 +15,6 @@ public interface ReservationDao extends SuperDao {
     boolean delete(String id) throws Exception;
 
     ArrayList<Reservation> getAll() throws SQLException, ClassNotFoundException;
+
+    String generateNewID() throws SQLException, ClassNotFoundException;
 }

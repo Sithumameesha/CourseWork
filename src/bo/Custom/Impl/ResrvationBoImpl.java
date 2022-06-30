@@ -93,6 +93,10 @@ public class ResrvationBoImpl implements ResrvationBo {
 
     }
 
+    @Override
+    public String generateResId() throws SQLException, ClassNotFoundException {
+        return reservationDao.generateNewID();
+    }
 
 
 }

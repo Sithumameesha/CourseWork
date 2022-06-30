@@ -31,8 +31,12 @@ import view.TM.StudentsTm;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 public class RegFormController {
     public JFXTextField txtQty;
@@ -58,6 +62,8 @@ public class RegFormController {
         loadAllRoomTypeId();
         loadAllStudentId();
         loadAllRes();
+        lblDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        txtRes_Id.setText(generateStudentId());
         tblReg.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("res_id"));
         tblReg.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("status"));
         tblReg.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("key_Money"));
@@ -67,7 +73,7 @@ public class RegFormController {
 
 
         comRoomType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newRoomId) -> {
-            // btnReserve.setDisable(newRoomId == null);
+
 
 
             if (newRoomId != null) {
@@ -158,6 +164,8 @@ public class RegFormController {
         txtQty.clear();
         comRoomType.getSelectionModel().clearSelection();
         comStudentId.getSelectionModel().clearSelection();
+        btnNew.setDisable(false);
+        btnAdd.setDisable(false);
     }
 
 
@@ -265,5 +273,32 @@ public class RegFormController {
 
     public void ClearOnAction(ActionEvent actionEvent) {
         clearText();
+        txtRes_Id.setText(generateStudentId());
+
+    }
+    private String generateStudentId() {
+        try {
+            return resrvationBo.generateResId();
+        } catch (SQLException e) {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        if (tblReg.getItems().isEmpty()) {
+            return "R-001";
+        } else {
+            String id = getLastResId();
+            int newResId = Integer.parseInt(id.replace("R", "")) + 1;
+            return String.format("R00-%03d", newResId);
+        }
+
+    }
+
+    private String getLastResId() {
+        List<ResevationTm> tmList = new ArrayList<>(tblReg.getItems());
+
+        Collections.sort(tmList);
+        return tmList.get(tmList.size() - 1).getStudent_id();
     }
 }

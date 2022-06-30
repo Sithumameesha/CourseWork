@@ -12,7 +12,7 @@ public class Room {
     private String type;
     private String key_money;
     private int qty;
-@OneToMany(mappedBy = "room_type_id",fetch = FetchType.EAGER)
+@OneToMany(mappedBy = "room_type_id")
     private List<Reservation> roomlist = new ArrayList<>();
 
     public Room() {

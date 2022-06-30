@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import utill.ValidationUtil;
+import view.TM.RoomTm;
 import view.TM.StudentsTm;
 
 import java.io.IOException;
@@ -31,7 +32,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class NewStudentFormController {
@@ -76,12 +79,13 @@ public class NewStudentFormController {
         });
         LoadAllStudents();
         tblStudents.refresh();
-        btnAdd.setDisable(true);
-        Pattern idPattern = Pattern.compile("^(S)[0-9]{3,5}$");
-        Pattern namePattern = Pattern.compile("^[A-z ]{3,15}$");
-        Pattern addressPattern = Pattern.compile("^[A-z0-9 ,/]{4,20}$");
-        map.put(txtId,idPattern);
-        map.put(txtName,namePattern);
+        txtId.setText(generateStudentId());
+//        btnAdd.setDisable(true);
+//        Pattern idPattern = Pattern.compile("^(S)[0-9]{3,5}$");
+//        Pattern namePattern = Pattern.compile("^[A-z ]{3,15}$");
+//        Pattern addressPattern = Pattern.compile("^[A-z0-9 ,/]{4,20}$");
+//        map.put(txtId,idPattern);
+//        map.put(txtName,namePattern);
 
 
 
@@ -181,6 +185,7 @@ public class NewStudentFormController {
         txtAddress.clear();
         txtName.clear();
         txtId.clear();
+        btnAdd.setText("Save");
     }
 
     public void ClickOnAction(MouseEvent mouseEvent) throws IOException {
@@ -228,25 +233,45 @@ public class NewStudentFormController {
 
     public void newOnAction(ActionEvent actionEvent) {
         ClearText();
+        txtId.setText(generateStudentId());
     }
 
     public void textFields_Key_Released(KeyEvent keyEvent) {
         ValidationUtil.validate(map,btnAdd);
-//        TextField = error
-//        boolean // validation ok
-
-        //if the enter key pressed
         if (keyEvent.getCode() == KeyCode.ENTER) {
             Object response =  ValidationUtil.validate(map,btnAdd);;
-            //if the response is a text field
-            //that means there is a error
             if (response instanceof TextField) {
                 TextField textField = (TextField) response;
-                textField.requestFocus();// if there is a error just focus it
+                textField.requestFocus();
             } else if (response instanceof Boolean) {
                 System.out.println("Work");
 
             }
         }
+    }
+    private String generateStudentId() {
+        try {
+            return studentsBo.generateNewStudentId();
+        } catch (SQLException e) {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        if (tblStudents.getItems().isEmpty()) {
+            return "S-001";
+        } else {
+            String id = getLastStudentId();
+            int newStudentId = Integer.parseInt(id.replace("S", "")) + 1;
+            return String.format("S00-%03d", newStudentId);
+        }
+
+    }
+
+    private String getLastStudentId() {
+        List<StudentsTm> tmList = new ArrayList<>(tblStudents.getItems());
+
+        Collections.sort(tmList);
+        return tmList.get(tmList.size() - 1).getStudent_id();
     }
 }

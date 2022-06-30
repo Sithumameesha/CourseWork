@@ -20,13 +20,13 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/MainPage.fxml"))));
-//        primaryStage.setTitle("WholeSale Management");
-//        primaryStage.centerOnScreen();
-//        primaryStage.show();
-        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/DashBoard.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/MainPage.fxml"))));
         primaryStage.setTitle("WholeSale Management");
         primaryStage.centerOnScreen();
         primaryStage.show();
+//        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/DashBoard.fxml"))));
+//        primaryStage.setTitle("WholeSale Management");
+//        primaryStage.centerOnScreen();
+//        primaryStage.show();
     }
 }

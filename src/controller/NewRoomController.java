@@ -193,7 +193,8 @@ public class NewRoomController {
         txtKeyMoney.clear();
         txtQty.clear();
         txtRoomId.clear();
-        txtRoomId.setText(generateNewId());
+        btnSave.setText("Save");
+       // txtRoomId.setText(generateNewId());
     }
     private String generateNewId() {
         try {

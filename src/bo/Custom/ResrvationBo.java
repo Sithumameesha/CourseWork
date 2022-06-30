@@ -18,4 +18,5 @@ public interface ResrvationBo extends SuperBo {
     ArrayList<ReservationDto >allRes() throws SQLException, ClassNotFoundException;
     boolean deleteRes(String id) throws Exception;
     boolean Update(ReservationDto reservationDto) throws Exception;
+    String generateResId() throws SQLException, ClassNotFoundException;
 }
