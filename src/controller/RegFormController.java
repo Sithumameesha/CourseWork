@@ -56,13 +56,13 @@ public class RegFormController {
     public void initialize() {
         loadAllRoomTypeId();
         loadAllStudentId();
-        //loadAllRes();
+        loadAllRes();
         tblReg.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("res_id"));
-        tblReg.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
-        tblReg.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("student_id"));
+        tblReg.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("key_Money"));
+        tblReg.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("status"));
         tblReg.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("room_type_id"));
-        tblReg.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("status"));
-        tblReg.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("key_Money"));
+        tblReg.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("student_id"));
+        tblReg.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("date"));
 
 
         comRoomType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newRoomId) -> {
@@ -81,12 +81,27 @@ public class RegFormController {
                 }
 
             } else {
-//                txtMonthlyRent.clear();
-//                txtQty.clear();
-//                txtStudentName.clear();
-//                txtMonthlyRent.clear();
+
             }
         });
+        tblReg.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            btnAdd.setText(newValue != null ? "Update" : "Save");
+            btnAdd.setDisable(newValue == null);
+            btnNew.setDisable(newValue== null);
+
+            if (newValue != null) {
+                txtRes_Id.setText(newValue.getRes_id());
+                txtKeyMoney.setText(newValue.getKey_Money());
+               txtRoomType.setText(newValue.getRoom_type_id());
+               txtStatus.setText(newValue.getStatus());
+               txtQty.setDisable(true);
+               btnNew.setDisable(true);
+
+
+            }
+        });
+
+
     }
 
     private void loadAllRes() {
@@ -124,17 +139,27 @@ public class RegFormController {
 
         boolean b = saveReserve(resId, date, student_Id, type_Id, key_money, status);
 
-        if (b) {
+        if (!b) {
 
-            new Alert(Alert.AlertType.CONFIRMATION, "Save " ).show();
-        } else {
             new Alert(Alert.AlertType.ERROR, "Not Save " ).show();
 
+            clearText();
+        } else {
+            new Alert(Alert.AlertType.CONFIRMATION, "Save " ).show();
         }
 
 
     }
 
+    private void clearText() {
+        txtRes_Id.clear();
+        txtStatus.clear();
+        txtRoomType.clear();
+        txtKeyMoney.clear();
+        txtQty.clear();
+        comRoomType.getSelectionModel().clearSelection();
+        comStudentId.getSelectionModel().clearSelection();
+    }
 
 
     public boolean saveReserve(String resId, String date,String student_Id, String type_Id, String key_money,String states) throws Exception {

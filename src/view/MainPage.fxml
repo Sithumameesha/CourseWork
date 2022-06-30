@@ -5,14 +5,17 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
    <children>
-      <ImageView fitHeight="412.0" fitWidth="600.0" pickOnBounds="true" smooth="false" />
+      <ImageView fitHeight="412.0" fitWidth="600.0" opacity="0.44" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assest/901.jpg" />
+         </image></ImageView>
       <Label layoutX="242.0" layoutY="70.0" text="Welcome">
          <font>
             <Font name="System Bold" size="24.0" />
